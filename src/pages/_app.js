@@ -1,12 +1,13 @@
 import React from 'react'
 import Head from 'next/head'
-import '../styles/globals.css'
+import Nav from '../components/Nav'
+import '../../styles/globals.css'
 
 const MyApp = ({ Component, pageProps }) => {
   return (
     <>
       <Head>
-        <title>Next and MDX Blog</title>
+        <title>NextJs Blog</title>
         <link
           href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
           rel="stylesheet"
@@ -16,6 +17,7 @@ const MyApp = ({ Component, pageProps }) => {
       </Head>
 
       <div className="container">
+        <Nav />
         <main>
           <Component {...pageProps} />
         </main>
@@ -23,3 +25,5 @@ const MyApp = ({ Component, pageProps }) => {
     </>
   )
 }
+
+export default MyApp
