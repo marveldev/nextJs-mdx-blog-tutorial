@@ -1,16 +1,40 @@
 import React from 'react'
-import styles from '../../styles/home.module.css'
 import fs from 'fs'
 import * as path from 'path'
 import matter from 'gray-matter'
+import Image from 'next/image'
+import Link from 'next/link'
 
 const Home = ({ posts }) => {
-  console.log(posts)
   return (
-    <div className={styles.container}>
-      <h1 className={styles.title}>
-        Welcome to <a href="https://nextjs.org">Next.js!</a>
-      </h1>
+    <div className="mt-5">
+      {posts?.map((post, index) => (
+        <Link href={`/blog/${post.slug}`} passHref key={index}>
+          <div className="card mb-3 pointer" style={{ maxWidth: '540px' }}>
+            <div className="row g-0">
+              <div className="col-md-8">
+                <div className="card-body">
+                  <h5 className="card-title">{post.data.title}</h5>
+                  <p className="card-text">{post.data.description}</p>
+                  <p className="card-text">
+                    <small className="text-muted">{post.data.date}</small>
+                  </p>
+                </div>
+              </div>
+              <div className="col-md-4 m-auto">
+                <Image
+                  src={post.data.thumbnailUrl}
+                  className="img-fluid mt-1 rounded-start"
+                  alt="thumbnail"
+                  width={500}
+                  height={400}
+                  objectFit="cover"
+                />
+              </div>
+            </div>
+          </div>
+        </Link>
+      ))}
     </div>
   )
 }
