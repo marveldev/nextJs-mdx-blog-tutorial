@@ -1,6 +1,6 @@
 import React from 'react'
 import fs from 'fs'
-import * as path from 'path'
+import path from 'path'
 import matter from 'gray-matter'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -9,7 +9,7 @@ const Home = ({ posts }) => {
   return (
     <div className="mt-5">
       {posts?.map((post, index) => (
-        <Link href={`/blog/${post.slug}`} passHref key={index}>
+        <Link key={index} href={`/blog/${post.slug}`} as={`/blog/${post.slug}`} passHref>
           <div className="card mb-3 pointer" style={{ maxWidth: '540px' }}>
             <div className="row g-0">
               <div className="col-md-8">
